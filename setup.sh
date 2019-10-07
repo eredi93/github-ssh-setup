@@ -2,6 +2,12 @@
 
 set -euo pipefail
 
+# ensure JQ is installed
+if ! command -v jq &> /dev/null; then
+  echo "JQ is not installed. Please install it with 'brew install jq' or download it from https://stedolan.github.io/jq/download/"
+  exit 1
+fi
+
 if ! [ -f "${HOME}/.ssh/id_rsa" ] && ! [ -f "${HOME}/.ssh/id_rsa.pub" ]; then
   echo "Generating new SSH key pair."
   ssh-keygen -N "" -t rsa -b 4096 -f "${HOME}/.ssh/id_rsa" > /dev/null
