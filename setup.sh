@@ -68,7 +68,7 @@ if echo "${token_response}" | grep -E -q '\s+"id":\s+[0-9]+,'; then
   echo "GitHub Personal access token successfully created"
 
   token=$(echo "${token_response}" | jq -r '.token')
-  hub_config_file="${HOME}/.config/hub-2"
+  hub_config_file="${HOME}/.config/hub"
 
   mkdir -p "$(dirname "${hub_config_file}")"
 
